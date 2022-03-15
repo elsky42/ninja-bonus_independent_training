@@ -1,0 +1,13 @@
+[BEGINVDF]
+Comment=Makes LP cost of training independent from the bonuses (potions, plants, ...)
+BaseDir=.\
+VDFName=.\BonusIndependentTraining.vdf
+[FILES]
+Ninja\BonusIndependentTraining\* -r
+[EXCLUDE]
+_work\Data\Scripts\* -r
+*.vm
+*.vdf
+*.bat
+[INCLUDE]
+[ENDVDF]

@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set tag and directory name env
+      run: |
+        $tagName = $Env:GITHUB_REF -replace 'refs/tags/', ''
+        $patchName = "BonusIndependentTraining"
+        $buildScript = "$patchName.vm"
+        $buildFile = "$patchName.vdf"
+        echo "Tag: ${tagName}"
+        echo "RELEASE_VERSION=${tagName}" >> $Env:GITHUB_ENV
+        echo "BUILD_SCRIPT=${buildScript}" >> $Env:GITHUB_ENV
+        echo "RELEASE_FILE=${buildFile}" >> $Env:GITHUB_ENV
+    - name: Build VDF
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: |
+        .\.github\vdfsbuilder.exe "${{env.BUILD_SCRIPT}}"
+    - name: Calculate distribution hash
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: |
+        (Get-FileHash "${{env.RELEASE_FILE}}" -Algorithm SHA256).hash | Out-File -FilePath "${{env.RELEASE_FILE}}.sha256"
+        type "${{env.RELEASE_FILE}}.sha256"
+    - name: Create github release
+      run: |
+        gh release create ${{env.RELEASE_VERSION}} -p -n "Generated release from GitHub Actions"
+        exit 0
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Upload artifacts to github release
+      run: |
+        gh release upload ${{env.RELEASE_VERSION}} "${{env.RELEASE_FILE}}"
+        gh release upload ${{env.RELEASE_VERSION}} "${{env.RELEASE_FILE}}.sha256"
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
