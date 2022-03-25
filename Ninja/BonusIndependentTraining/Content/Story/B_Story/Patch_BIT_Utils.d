@@ -53,8 +53,13 @@ func string Patch_BIT_AttributeToString (var int attrib)
 func int Patch_BIT_TeachFightTalentPercent_Wrapper (var C_NPC slf, var C_NPC oth, var int talent, var int percent, var int teacherMAX)
 {
 	var string concatText;
-	var string realTalent; realTalent = IntToString ( Patch_BIT_GetRealFightTalentPercent (oth, talent) );
-	var string fightSkill; fightSkill = IntToString ( Patch_BIT_GetHitChance (oth, talent) );
+	var string realTalent;
+	var string fightSkill;
+
+	if (Patch_BIT_Show_stats_when_training) {
+		realTalent = IntToString ( Patch_BIT_GetRealFightTalentPercent (oth, talent) );
+		fightSkill = IntToString ( Patch_BIT_GetHitChance (oth, talent) );
+	};
 
     var int res;
     PassArgumentN (slf);
@@ -67,17 +72,19 @@ func int Patch_BIT_TeachFightTalentPercent_Wrapper (var C_NPC slf, var C_NPC oth
     
     B_RaiseRealFightTalentPercent (oth, talent, percent);
 
-	concatText = ConcatStrings(Patch_BIT_TalentToString(talent), " trained:");
-	concatText = ConcatStrings (concatText, realTalent);
-	concatText = ConcatStrings (concatText, "->");
-	realTalent = IntToString ( Patch_BIT_GetRealFightTalentPercent (oth, talent) );
-	concatText = ConcatStrings (concatText, realTalent );
-	concatText = ConcatStrings (concatText, " real:");
-	concatText = ConcatStrings (concatText, fightSkill);
-	concatText = ConcatStrings (concatText, "->");
-	fightSkill = IntToString ( Patch_BIT_GetHitChance(oth, talent) );
-	concatText = ConcatStrings (concatText, fightSkill );
-	PrintScreen	(concatText, 5, 5, FONT_SCREEN, 2);
+	if (Patch_BIT_Show_stats_when_training) {
+		concatText = ConcatStrings(Patch_BIT_TalentToString(talent), " trained:");
+		concatText = ConcatStrings (concatText, realTalent);
+		concatText = ConcatStrings (concatText, "->");
+		realTalent = IntToString ( Patch_BIT_GetRealFightTalentPercent (oth, talent) );
+		concatText = ConcatStrings (concatText, realTalent );
+		concatText = ConcatStrings (concatText, " real:");
+		concatText = ConcatStrings (concatText, fightSkill);
+		concatText = ConcatStrings (concatText, "->");
+		fightSkill = IntToString ( Patch_BIT_GetHitChance(oth, talent) );
+		concatText = ConcatStrings (concatText, fightSkill );
+		PrintScreen	(concatText, 5, 5, FONT_SCREEN, 2);
+	};
 
     return res;
 };
@@ -85,8 +92,13 @@ func int Patch_BIT_TeachFightTalentPercent_Wrapper (var C_NPC slf, var C_NPC oth
 func int Patch_BIT_TeachAttributePoints_Wrapper (var C_NPC slf, var C_NPC oth, var int attrib, var int points, var int teacherMAX)
 {
 	var string concatText;
-	var string realAttr; realAttr = IntToString ( Patch_BIT_GetRealAttribute (oth, attrib) );
-	var string attr; attr = IntToString ( Patch_BIT_GetAttribute(oth, attrib) );
+	var string realAttr;	
+	var string attr;
+
+	if (Patch_BIT_Show_stats_when_training) {
+		realAttr = IntToString ( Patch_BIT_GetRealAttribute (oth, attrib) );
+		attr = IntToString ( Patch_BIT_GetAttribute(oth, attrib) );
+	};
 
     var int res;
     PassArgumentN (slf);
@@ -99,17 +111,19 @@ func int Patch_BIT_TeachAttributePoints_Wrapper (var C_NPC slf, var C_NPC oth, v
     
     B_RaiseRealAttributeLearnCounter (oth, attrib, points);
 
-	concatText = ConcatStrings (Patch_BIT_AttributeToString(attrib), " trained:");
-	concatText = ConcatStrings (concatText, realAttr);
-	concatText = ConcatStrings (concatText, "->");
-	realAttr = IntToString ( Patch_BIT_GetRealAttribute (oth, attrib) );
-	concatText = ConcatStrings (concatText, realAttr );
-	concatText = ConcatStrings (concatText, " real:");
-	concatText = ConcatStrings (concatText, attr);
-	concatText = ConcatStrings (concatText, "->");
-	attr = IntToString ( Patch_BIT_GetAttribute(oth, attrib) );
-	concatText = ConcatStrings (concatText, attr );
-	PrintScreen	(concatText, 5, 5, FONT_SCREEN, 2);
+	if (Patch_BIT_Show_stats_when_training) {
+		concatText = ConcatStrings (Patch_BIT_AttributeToString(attrib), " trained:");
+		concatText = ConcatStrings (concatText, realAttr);
+		concatText = ConcatStrings (concatText, "->");
+		realAttr = IntToString ( Patch_BIT_GetRealAttribute (oth, attrib) );
+		concatText = ConcatStrings (concatText, realAttr );
+		concatText = ConcatStrings (concatText, " real:");
+		concatText = ConcatStrings (concatText, attr);
+		concatText = ConcatStrings (concatText, "->");
+		attr = IntToString ( Patch_BIT_GetAttribute(oth, attrib) );
+		concatText = ConcatStrings (concatText, attr );
+		PrintScreen	(concatText, 5, 5, FONT_SCREEN, 2);
+	};
 
     return res;
 };
