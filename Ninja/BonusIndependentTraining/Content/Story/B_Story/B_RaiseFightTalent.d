@@ -1,8 +1,4 @@
-// ******************
-// B_RaiseFightTalent
-// ******************
-
-// ------------------------------------
+// ---------------------------------------
 func void B_RaiseRealFightTalentPercent (var C_NPC oth, var int talent, var int percent)
 {
 	if 		(talent == NPC_TALENT_1H)		{	oth.aivar[REAL_TALENT_1H] = oth.aivar[REAL_TALENT_1H] + percent;	}
@@ -11,9 +7,8 @@ func void B_RaiseRealFightTalentPercent (var C_NPC oth, var int talent, var int 
 	else if (talent == NPC_TALENT_CROSSBOW)	{	oth.aivar[REAL_TALENT_CROSSBOW] = oth.aivar[REAL_TALENT_CROSSBOW] + percent;	};
 };
 
-// ------------------------------------
+// ---------------------------------------
 func void B_RaiseFightTalent (var C_NPC oth, var int talent, var int percent)
 {
-	// B_RaiseRealFightTalentPercent (oth, talent, percent);
 	B_AddFightSkill (oth, talent, percent);
 };
