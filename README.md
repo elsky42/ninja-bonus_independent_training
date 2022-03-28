@@ -15,6 +15,26 @@ The main effect of this mod is that you can use the permanent bonuses whenever y
 
 Just remove BonusIndependentTraining.vdf from your installation Data directory. Note that existing saves will retain the changes made by the mod even after you uninstall it.
 
+## Configuration
+
+You can edit the configuration in _gothic II/system/gothic.ini_. This is an example:
+
+```
+[NINJA_BONUS-INDEPENDENT-TRAINING]
+
+; shows a message with the trained and effective stat when you train
+show_stats_when_training=false
+
+; whether the trainer max attr/skill check is done against the
+; trained or the effective value of that attr/skill.
+;
+; e.g. say that the bow level is 70 = 54 trained + 16 from bonuses
+; and there is a trainer with max training at 70. If this is true
+; then the trainer won't be able to train you anymore, otherwise the
+; trainer will be able to train you for 16 more points.
+trainer_max_against_effective=true
+```
+
 ## Warning
 
 This mod overrides the way levelling works and it's of course incompatible with any other mod that changes the same functions.

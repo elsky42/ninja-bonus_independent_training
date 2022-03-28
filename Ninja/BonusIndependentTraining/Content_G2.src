@@ -2,6 +2,7 @@ Ikarus
 
 Content\Story\B_Story\Patch_BIT_Conf.d
 Content\Story\B_Story\Patch_BIT_Utils.d
+Content\Story\B_Story\Patch_BIT_Hooks.d
 NinjaInit.d
 Content\Story\B_Story\B_BlessAttribute.d
 Content\Story\B_Story\B_RaiseAttribute.d
