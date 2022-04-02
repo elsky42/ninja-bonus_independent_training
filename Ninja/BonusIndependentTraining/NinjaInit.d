@@ -13,8 +13,11 @@ func void Ninja_BonusIndependentTraining_Init() {
         once = 0;
     };
 
-    HookDaedalusFuncS("B_TeachFightTalentPercent", "Patch_BIT_TeachFightTalentPercent_Wrapper");
-    HookDaedalusFuncS("B_TeachAttributePoints", "Patch_BIT_TeachAttributePoints_Wrapper");
+    HookDaedalusFuncS("B_TeachFightTalentPercent", "Patch_BIT_TeachFightTalentPercent");
+    HookDaedalusFuncS("B_TeachAttributePoints", "Patch_BIT_TeachAttributePoints");
+    HookDaedalusFuncS("B_RaiseFightTalent", "Patch_BIT_B_RaiseFightTalent");
+    HookDaedalusFuncS("B_RaiseAttribute", "Patch_BIT_B_RaiseAttribute");
+    HookDaedalusFuncS("B_BlessAttribute", "Patch_BIT_B_RaiseAttribute");
 
     MEM_Info(ConcatStrings(Patch_BIT_ID, " was initialized successfully."));
 };
