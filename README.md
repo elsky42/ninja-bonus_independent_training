@@ -35,9 +35,9 @@ show_stats_when_training=false
 trainer_max_against_effective=true
 ```
 
-## Warning
+## Compatibility
 
-This mod overrides the way levelling works and it's of course incompatible with any other mod that changes the same functions.
+This mod creates hooks around the functions `B_TeachFightTalentPercent`, `B_TeachAttributePoints`, `B_RaiseFightTalent`, `B_RaiseAttribute` and `B_BlessAttribute` to prevent them from changing the real attributes or fight talents. Therefore this mod should be highly compatible with other mods unless they require the real attributes or fight talents to be changed by the functions mentioned.
 
 ## Thanks
 
