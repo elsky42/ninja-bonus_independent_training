@@ -53,7 +53,7 @@ func int Patch_BIT_TeachFightTalentPercent (var C_NPC slf, var C_NPC oth, var in
 		concatText = ConcatStrings (concatText, "->");
 		fightSkill = Patch_BIT_GetHitChance(oth, talent);
 		concatText = ConcatStrings (concatText, IntToString (fightSkill) );
-		PrintScreen	(concatText, 5, 5, FONT_SCREEN, 2);
+		PrintScreen	(concatText, 5, 5, FONT_SCREEN, 5);
 	};
 
     return res;

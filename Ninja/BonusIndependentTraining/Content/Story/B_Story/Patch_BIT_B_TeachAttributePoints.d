@@ -48,7 +48,7 @@ func int Patch_BIT_TeachAttributePoints (var C_NPC slf, var C_NPC oth, var int a
 		concatText = ConcatStrings (concatText, "->");
 		attr = Patch_BIT_GetAttribute(oth, attrib);
 		concatText = ConcatStrings (concatText, IntToString(attr));
-		PrintScreen	(concatText, 5, 5, FONT_SCREEN, 2);
+		PrintScreen	(concatText, 5, 5, FONT_SCREEN, 5);
 	};
 
     return res;
