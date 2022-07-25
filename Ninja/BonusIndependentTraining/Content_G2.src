@@ -1,4 +1,5 @@
 Ikarus
+LeGo
 
 Content\Story\B_Story\Patch_BIT_Conf.d
 Content\Story\B_Story\Patch_BIT_Utils.d
@@ -6,4 +7,4 @@ Content\Story\B_Story\Patch_BIT_B_RaiseAttribute.d
 Content\Story\B_Story\Patch_BIT_B_RaiseFightTalent.d
 Content\Story\B_Story\Patch_BIT_B_TeachAttributePoints.d
 Content\Story\B_Story\Patch_BIT_b_TeachFightTalentPercent.d
-NinjaInit.d
+Content\NinjaInit.d
