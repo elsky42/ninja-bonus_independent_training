@@ -4,6 +4,11 @@ This is a Gothic 2 mod that changes the way training works such that only "train
 
 The main effect of this mod is that you can use the permanent bonuses whenever you want.
 
+This mod also adds a new command `BIT getcharactervalues` that prints to console the trained and effective values of each
+attribute and skill.
+
+Optionally, this mod also alters the character menu to show the trained values together with the effective values.
+
 ## Install
 
 1. Requires Gothic 2 with [Ninja 2+](https://github.com/szapp/Ninja)

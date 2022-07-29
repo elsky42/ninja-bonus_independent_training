@@ -4,6 +4,7 @@ const string Patch_BIT_ID = "BonusIndependentTraining";
 func void Ninja_BonusIndependentTraining_Init() {
 	// Initialize Ikarus
 	MEM_InitAll();
+    LeGo_Init(LeGo_ConsoleCommands);
 	
     const int once = 1;
     if (once) {
@@ -13,6 +14,9 @@ func void Ninja_BonusIndependentTraining_Init() {
         if (PATCH_BIT_show_real_stats_in_char_menu) {
             HookEngineF(4712608, 7, Patch_BIT_Update_Character_Menu);
         };
+
+        CC_Register(Patch_BIT_GetCharacterValues, "BIT getcharactervalues", "Return trained and effective attributes and fight talents");
+
         once = 0;
     };
 
