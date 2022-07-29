@@ -9,7 +9,10 @@ func void Ninja_BonusIndependentTraining_Init() {
     if (once) {
         MEM_Info(ConcatStrings(ConcatStrings(Patch_BIT_ID, ": " ), "Applying Gothic.INI."));
         Patch_BIT_ApplyINI();
-        MEM_Info(ConcatStrings(ConcatStrings(Patch_BIT_ID, ": " ), "Gothic.INI applied"));	
+        MEM_Info(ConcatStrings(ConcatStrings(Patch_BIT_ID, ": " ), "Gothic.INI applied"));
+        if (PATCH_BIT_show_real_stats_in_char_menu) {
+            HookEngineF(4712608, 7, Patch_BIT_Update_Character_Menu);
+        };
         once = 0;
     };
 
