@@ -42,7 +42,7 @@ trainer_max_against_effective=true
 ; shows the trained stat in the char menu on the left of the effective stat
 ; e.g. Strength 10 25 means that the hero has 10 trained strength
 ; and 25 effective
-show_real_stats_in_char_menu
+show_real_stats_in_char_menu=true
 ```
 
 ## Compatibility
