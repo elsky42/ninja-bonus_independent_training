@@ -45,6 +45,11 @@ trainer_max_against_effective=true
 show_real_stats_in_char_menu=true
 ```
 
+## Commands
+
+A new console command `BIT getcharactervalues` is available to check the trained and effective values.
+This is useful for when `show_real_stats_in_char_menu` is `false`.
+
 ## Compatibility
 
 This mod creates hooks around the functions `B_TeachFightTalentPercent`, `B_TeachAttributePoints`, `B_RaiseFightTalent`, `B_RaiseAttribute` and `B_BlessAttribute` to prevent them from changing the real attributes or fight talents. Therefore this mod should be highly compatible with other mods unless they require the real attributes or fight talents to be changed by the functions mentioned.
