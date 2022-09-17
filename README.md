@@ -45,10 +45,14 @@ trainer_max_against_effective=true
 show_real_stats_in_char_menu=true
 ```
 
+![Character Menu with show_real_stats_in_char_menu=true](media/char_menu.jpg)
+
 ## Commands
 
 A new console command `BIT getcharactervalues` is available to check the trained and effective values.
 This is useful for when `show_real_stats_in_char_menu` is `false`.
+
+![BIT getcharactervalues example](media/command.jpg)
 
 ## Compatibility
 
