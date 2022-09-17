@@ -24,7 +24,7 @@ func void Ninja_BonusIndependentTraining_Init() {
     HookDaedalusFuncS("B_TeachAttributePoints", "Patch_BIT_TeachAttributePoints");
     HookDaedalusFuncS("B_RaiseFightTalent", "Patch_BIT_B_RaiseFightTalent");
     HookDaedalusFuncS("B_RaiseAttribute", "Patch_BIT_B_RaiseAttribute");
-    HookDaedalusFuncS("B_BlessAttribute", "Patch_BIT_B_RaiseAttribute");
+    HookDaedalusFuncS("B_BlessAttribute", "Patch_BIT_B_BlessAttribute");
 
     MEM_Info(ConcatStrings(Patch_BIT_ID, " was initialized successfully."));
 };

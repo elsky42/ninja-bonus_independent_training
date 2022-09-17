@@ -1,4 +1,3 @@
-
 func void Patch_BIT_B_RaiseAttribute (var C_NPC oth, var int attrib, var int points)
 {
     var int oldReal; oldReal = Patch_BIT_GetRealAttribute (oth, attrib);
@@ -12,4 +11,9 @@ func void Patch_BIT_B_RaiseAttribute (var C_NPC oth, var int attrib, var int poi
         var int diff; diff = Patch_BIT_GetRealAttribute (oth, attrib) - oldReal;
         B_RaiseRealAttributeLearnCounter (oth, attrib, -diff);
     };
+};
+
+func void Patch_BIT_B_BlessAttribute (var C_NPC oth, var int attrib, var int points)
+{
+    Patch_BIT_B_RaiseAttribute(oth, attrib, points);
 };
