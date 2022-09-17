@@ -2,12 +2,11 @@
 func int Patch_BIT_TeachFightTalentPercent (var C_NPC slf, var C_NPC oth, var int talent, var int percent, var int teacherMAX)
 {
 	var string concatText;
-	var int realTalent;
+	var int realTalent; realTalent = Patch_BIT_GetRealFightTalentPercent (oth, talent);
 	var int fightSkill;
 	var int diff;
 
 	if (Patch_BIT_Show_stats_when_training) {
-		realTalent = Patch_BIT_GetRealFightTalentPercent (oth, talent);
 		fightSkill = Patch_BIT_GetHitChance (oth, talent);
 		diff = realTalent - fightSkill;
 	};
