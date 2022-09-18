@@ -49,10 +49,24 @@ show_real_stats_in_char_menu=true
 
 ## Commands
 
-A new console command `BIT getcharactervalues` is available to check the trained and effective values.
+This mods makes two new commands available: `BIT getcharactervalues` and `BIT setrealcharactervalue`.
+
+`BIT getcharactervalues` allows to check the trained and effective values.
 This is useful for when `show_real_stats_in_char_menu` is `false`.
 
 ![BIT getcharactervalues example](media/command.jpg)
+
+`BIT setrealcharactervalue` allows to manually change the trained values of strength, dexterity, max mana, one-handed,
+two-handed, bow and crossbow. It takes two parametes in input: the attribute or talent to change and the new value.
+
+The strings `str`, `dex` and `mana` can be used respectively for the attributes strength, dexterity and max mana.
+The strings `1h`, `2h`, `bow` and `xbow` can be used respectively for the talents one-handed, two-handed, bow and crossbow.
+
+For example, to set the trained strength to 10:
+
+```
+BIT setrealcharactervalue str 10
+```
 
 ## Compatibility
 

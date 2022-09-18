@@ -16,6 +16,7 @@ func void Ninja_BonusIndependentTraining_Init() {
         };
 
         CC_Register(Patch_BIT_GetCharacterValues, "BIT getcharactervalues", "Return trained and effective attributes and fight talents");
+        CC_Register(Patch_BIT_SetRealCharacterValue, "BIT setrealcharactervalue ", "Set the hero attribute or talent to the given value");
 
         once = 0;
     };

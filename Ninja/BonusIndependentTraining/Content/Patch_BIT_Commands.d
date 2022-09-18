@@ -30,3 +30,42 @@ func string Patch_BIT_GetCharacterValues(var string args)
 
     return ret;
 };
+
+func string Patch_BIT_SetRealCharacterValue(var string args)
+{
+    if (Hlp_StrCmp(args, "")) {
+        return "Usage: (str|dex|mana|1h|2h|bow|xbow) <new_value>";
+    };
+    var string attrOrTalent; attrOrTalent = STR_Upper(STR_Split(args, " ", 0));
+    var int newValue; newValue = STR_ToInt(STR_Split(args, " ", 1));
+    var string attrOrTalentRepr;
+    if (Hlp_StrCmp(attrOrTalent, "STR")) {
+        hero.aivar[REAL_STRENGTH] = newValue;
+        attrOrTalentRepr = "string";
+    } else if (Hlp_StrCmp(attrOrTalent, "DEX")) {
+        hero.aivar[REAL_DEXTERITY] = newValue;
+        attrOrTalentRepr = "dexterity";
+    } else if (Hlp_StrCmp(attrOrTalent, "MANA")) {
+        hero.aivar[REAL_MANA_MAX] = newValue;
+        attrOrTalentRepr = "max mana";
+    } else if (Hlp_StrCmp(attrOrTalent, "1H")) {
+        hero.aivar[REAL_TALENT_1H] = newValue;
+        attrOrTalentRepr = "one-handed";
+    } else if (Hlp_StrCmp(attrOrTalent, "2H")) {
+        hero.aivar[REAL_TALENT_2H] = newValue;
+        attrOrTalentRepr = "two-handed";
+    } else if (Hlp_StrCmp(attrOrTalent, "BOW")) {
+        hero.aivar[REAL_TALENT_BOW] = newValue;
+        attrOrTalentRepr = "bow";
+    } else if (Hlp_StrCmp(attrOrTalent, "XBOW")) {
+        hero.aivar[REAL_TALENT_CROSSBOW] = newValue;
+        attrOrTalentRepr = "crossbow";
+    } else {
+        return ConcatStrings("Unknown attribute or talent: ", attrOrTalent);
+    };
+    var int s; s = SB_New();
+    SB("Set "); SB(attrOrTalentRepr); SB(" to "); SBi(newValue);
+    var string ret; ret = SB_ToString();
+    SB_Destroy();
+    return ret;
+};
