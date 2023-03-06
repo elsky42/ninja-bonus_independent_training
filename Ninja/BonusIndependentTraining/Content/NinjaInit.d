@@ -4,7 +4,7 @@ const string Patch_BIT_ID = "BonusIndependentTraining";
 func void Ninja_BonusIndependentTraining_Init() {
 	// Initialize Ikarus
 	MEM_InitAll();
-    LeGo_Init(LeGo_ConsoleCommands);
+    LeGo_MergeFlags(LeGo_ConsoleCommands);
 	
     const int once = 1;
     if (once) {
