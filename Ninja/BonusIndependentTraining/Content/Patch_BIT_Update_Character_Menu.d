@@ -26,6 +26,14 @@ func int Patch_BIT_Min(var int x, var int y)
     return x;
 };
 
+func int Patch_BIT_Max(var int x, var int y)
+{
+    if (x < y) {
+        return y;
+    };
+    return x;
+};
+
 func void Patch_BIT_Update_Attribute(var string menuItem, var int attrib)
 {
     var string s; s = IntToString(Patch_BIT_GetAttribute(hero, attrib));
@@ -47,7 +55,14 @@ func void Patch_BIT_Update_Attribute(var string menuItem, var int attrib)
 func void Patch_BIT_Update_Fight_Talent(var string menuItem, var int talent)
 {
     var string s;
-    s = ConcatStrings(IntToString(Patch_BIT_GetRealFightTalentPercent(hero, talent)), "%");
+
+    // For some reason the trained value can be 0 instead of 10. Every talent
+    // starts at 10 so 0 is converted to 10.
+    var int trained;
+    trained = Patch_BIT_GetRealFightTalentPercent(hero, talent);
+    trained = Patch_BIT_Max(10, trained);
+
+    s = ConcatStrings(IntToString(trained), "%");
     s = ConcatStrings(s, "/");
     s = ConcatStrings(s, IntToString(Patch_BIT_GetHitChance(hero, talent)));
     s = ConcatStrings(s, "%");
