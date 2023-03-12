@@ -2,15 +2,9 @@
 func int Patch_BIT_TeachAttributePoints (var C_NPC slf, var C_NPC oth, var int attrib, var int points, var int teacherMAX)
 {
 	var string concatText;
-	var int realAttr;
-	var int attr;
-	var int diff;
-
-	if (Patch_BIT_Show_stats_when_training) {
-		realAttr = Patch_BIT_GetRealAttribute (oth, attrib);
-		attr = Patch_BIT_GetAttribute(oth, attrib);
-		diff = realAttr - attr;
-	};
+	var int realAttr; realAttr = Patch_BIT_GetRealAttribute (oth, attrib);
+	var int attr; attr = Patch_BIT_GetAttribute(oth, attrib);
+	var int diff; diff = realAttr - attr;
 
 	if (!Patch_BIT_trainer_max_on_effective) {
 		// reduce the real value to the trained to pass the teacher max check
@@ -37,18 +31,16 @@ func int Patch_BIT_TeachAttributePoints (var C_NPC slf, var C_NPC oth, var int a
 
     B_RaiseRealAttributeLearnCounter (oth, attrib, points);
 
+	var int s; s = SB_New();
+	SB(Patch_BIT_AttributeToString(attrib));
+	SB(" trained:"); SBi(realAttr); SB("->"); SBi(Patch_BIT_GetRealAttribute (oth, attrib));
+	SB(" effective:"); SBi(attr); SB("->"); SBi(Patch_BIT_GetAttribute(oth, attrib));
+	var string ret; ret = SB_ToString();
+	SB_Destroy();
+	MEM_Info(ret);
+
 	if (Patch_BIT_Show_stats_when_training) {
-		concatText = ConcatStrings (Patch_BIT_AttributeToString(attrib), " trained:");
-		concatText = ConcatStrings (concatText, IntToString (realAttr));
-		concatText = ConcatStrings (concatText, "->");
-		realAttr = Patch_BIT_GetRealAttribute (oth, attrib);
-		concatText = ConcatStrings (concatText, IntToString (realAttr));
-		concatText = ConcatStrings (concatText, " effective:");
-		concatText = ConcatStrings (concatText, IntToString(attr));
-		concatText = ConcatStrings (concatText, "->");
-		attr = Patch_BIT_GetAttribute(oth, attrib);
-		concatText = ConcatStrings (concatText, IntToString(attr));
-		PrintScreen	(concatText, 5, 5, FONT_SCREEN, 5);
+		PrintScreen	(ret, 5, 5, FONT_SCREEN, 5);
 	};
 
     return res;
